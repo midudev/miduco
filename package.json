@@ -1,10 +1,10 @@
 {
   "name": "miduco",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Help you to create commits easier",
   "type": "module",
   "bin": {
-    "miduco": "./src/index.js"
+    "miduco": "./src/bin.js"
   },
   "main": "index.js",
   "scripts": {
