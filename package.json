@@ -1,17 +1,22 @@
 {
   "name": "miduco",
   "version": "1.0.0",
-  "description": "",
+  "description": "Help you to create commits easier",
   "type": "module",
+  "bin": {
+    "miduco": "./src/index.js"
+  },
   "main": "index.js",
   "scripts": {
+    "co": "miduco",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "standard": "^17.0.0"
+    "miduco": "file://.",
+    "standard": "17.0.0"
   },
   "eslintConfig": {
     "extends": "standard"
