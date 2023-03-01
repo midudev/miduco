@@ -1,18 +1,12 @@
+import { trytm } from '@bdsqqq/try'
 import {
-  intro,
-  outro,
-  text,
-  select,
-  confirm,
-  multiselect,
-  isCancel
+  confirm, intro, isCancel, multiselect, outro, select, text
 } from '@clack/prompts'
 import colors from 'picocolors'
-import { trytm } from '@bdsqqq/try'
 
-import { exitProgram } from './utils.js'
 import { COMMIT_TYPES } from './commit-types.js'
-import { getChangedFiles, getStagedFiles, gitAdd, gitCommit } from './git.js'
+import { getChangedFiles, getStagedFiles, gitAdd, gitCommit, gitPush } from './git.js'
+import { exitProgram } from './utils.js'
 
 intro(
   colors.inverse(` Asistente para la creación de commits por ${colors.yellow(' @midudev ')}`)
@@ -86,9 +80,9 @@ const shouldContinue = await confirm({
   initialValue: true,
   message: `${colors.cyan('¿Quieres crear el commit con el siguiente mensaje?')}
 
-  ${colors.green(colors.bold(commit))}
+    ${colors.green(colors.bold(commit))}
 
-  ${colors.cyan('¿Confirmas?')}`
+    ${colors.cyan('¿Confirmas?')}`
 })
 
 if (isCancel(shouldContinue)) exitProgram()
@@ -100,6 +94,21 @@ if (!shouldContinue) {
 
 await gitCommit({ commit })
 
+console.log(colors.green('✔️ Commit creado con éxito.'))
+
+const shouldPushCommit = await confirm({
+  initialValue: true,
+  message: `${colors.cyan('¿Quieres pushear el commit?')}
+
+    ${colors.cyan('¿Confirmas?')}`
+})
+
+if (isCancel(shouldPushCommit)) exitProgram()
+
+if (shouldPushCommit) {
+  await gitPush()
+}
+
 outro(
-  colors.green('✔️ Commit creado con éxito. ¡Gracias por usar el asistente!')
+  colors.green('¡Gracias por usar el asistente!')
 )
