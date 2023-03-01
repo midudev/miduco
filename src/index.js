@@ -58,7 +58,7 @@ const commitMessage = await text({
     }
 
     if (value.length > 50) {
-      return colors.red('El mensaje no puede tener más de 100 caracteres')
+      return colors.red('El mensaje no puede tener más de 50 caracteres')
     }
   }
 })
