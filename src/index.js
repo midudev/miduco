@@ -98,7 +98,7 @@ console.log(colors.green('✔️ Commit creado con éxito.'))
 
 const shouldPushCommit = await confirm({
   initialValue: true,
-  message: `${colors.cyan('¿Quieres pushear el commit?')}
+  message: `${colors.cyan('¿Quieres hacer push de este commit?')}
 
     ${colors.cyan('¿Confirmas?')}`
 })
