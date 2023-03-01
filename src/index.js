@@ -91,12 +91,7 @@ const shouldContinue = await confirm({
   ${colors.cyan('¿Confirmas?')}`
 })
 
-if (isCancel(shouldContinue)) exitProgram()
-
-if (!shouldContinue) {
-  outro(colors.yellow('No se ha creado el commit'))
-  process.exit(0)
-}
+if (isCancel(shouldContinue) || !shouldContinue) exitProgram()
 
 await gitCommit({ commit })
 
