@@ -27,3 +27,11 @@ export async function gitAdd ({ files = [] } = {}) {
   const { stdout } = await execAsync(`git add ${filesLine}`)
   return cleanStdout(stdout)
 }
+
+export async function gitPush () {
+  const { stdout } = await execAsync(`
+    CURRENT_BRANCH=$(git branch --show-current) 
+    git push origin "$CURRENT_BRANCH"
+  `)
+  return cleanStdout(stdout)
+}
